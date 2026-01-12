@@ -27,7 +27,7 @@ Designed for quick data entry, deterministic itinerary generation, and ergonomic
 
 ## Usage
 
-1. Open `index.html` in a modern browser. Access it online [here](https://sageind.github.io/aavartan/) 🥷🏽✒️🖤
+1. Open `index.html` in a modern browser while offline or access it online [here](https://sageind.github.io/aavartan/) 🥷🏽✒️🖤
 2. Use **Visit Programme** to create a new programme, or use **Visits Conducted** to open existing programmes.
 3. Use **Import TXT** to restore previously exported data. After import refresh the `index.html` page.
 
