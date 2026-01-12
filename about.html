@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aavartan — About</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="alternate icon" href="favicon.svg" />
+
+
+
+
+  <link rel="stylesheet" href="offline-assets/bootstrap.min.css"> <!-- ⚡Offline assets -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="print.css">
+</head>
+
+<body class="app-body about-page">
+  <div id="terrainLayer" class="terrain-layer" aria-hidden="true"></div>
+
+  <header class="app-topbar">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center justify-content-between py-2">
+        <div class="app-brand font-mono">aavartan</div>
+        <div class="d-flex align-items-center gap-2">
+          <div class="app-today font-mono" id="todayBadge"></div>
+          <button class="icon-btn" type="button" id="sidebarMenuBtn" data-bs-toggle="offcanvas" data-bs-target="#appSidebar" aria-controls="appSidebar" aria-label="Menu">
+            <span class="hamburger" aria-hidden="true">☰</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="offcanvas offcanvas-end app-sidebar" tabindex="-1" id="appSidebar" aria-labelledby="appSidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title font-mono m-0" id="appSidebarLabel">menu</h5>
+      <button type="button" class="btn-close" id="sidebarCloseBtn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action" href="index.html">Visits Conducted</a>
+        <a class="list-group-item list-group-item-action" href="vispgme.html?new=1">Visit Programme</a>
+        <a class="list-group-item list-group-item-action" href="about.html">About</a>
+        <a class="list-group-item list-group-item-action" href="contact.html">Contact</a>
+      </div>
+
+      <div class="mt-auto pt-3">
+        <div class="sidebar-divider"></div>
+        <div class="d-flex align-items-center justify-content-between px-2">
+          <div class="small sidebar-meta">Dark mode</div>
+          <div class="form-check form-switch m-0">
+            <input class="form-check-input" type="checkbox" id="themeSwitch" />
+          </div>
+        </div>
+        <button class="d-none" id="toggleThemeBtn" type="button">Dark mode</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="container-fluid app-main pb-4">
+    <section class="about-shell">
+      <div class="about-left">
+        <div class="about-kicker font-mono">ABOUT</div>
+        <h2 class="about-title mb-2">aavartan</h2>
+        <div class="about-subtitle">Offline-first visit programme planner with robust tabulation.</div>
+
+        <div class="about-block mt-4">
+          <div class="about-block-title">Core features</div>
+          <ul class="about-list">
+            <li><b>Visit Programme</b>: rapid itinerary entry with on-the-fly time amendment</li>
+            <li><b>Visits Conducted</b>: search/sort/open/delete saved visits</li>
+            <li><b>PDF & DOCX export (A4)</b> using jsPDF + AutoTables </li>
+            <li><b>Export/Import TXT</b> for backup and device transfer</li>
+          </ul>
+        </div>
+
+        <div class="about-grid mt-4">
+          <div class="about-mini">
+            <div class="about-mini-title">Developer</div>
+            <div class="about-mini-value">Sage India</div>
+          </div>
+          <div class="about-mini">
+            <div class="about-mini-title">Print policy</div>
+            <div class="about-mini-value">Print styles enforce black-on-white, Arial, and straight-line borders.</div>
+          </div>
+        </div>
+
+        <div class="about-block mt-4">
+          <div class="about-block-title">TXT import/export format (v1)</div>
+          <div class="about-note">
+            The app exports a plain-text file you can move between devices. The structure is token-delimited and safe for offline use.
+            Avoid typing sentinel lines (e.g., <code>BEGIN_EVENT</code>) inside your event/remarks text. After an import of a previously exported file don't forget to refresh the index.html page. Also click New on bottom navbar if Visit Programme page loads with past visit data after viewing past visit (quirk).
+          </div>
+          <pre class="about-pre">AAVARTAN_TXT_V1
+
+BEGIN_VISIT
+id=...
+createdAt=...
+eventName=...
+vipTitle=...
+vipFirst=...
+vipLast=...
+vipAwards=...
+vipDesig=...
+stationName=...
+visitFrom=YYYY-MM-DD
+visitTo=YYYY-MM-DD
+BEGIN_ROWS
+BEGIN_ROW
+id=...
+createdAt=...
+date=YYYY-MM-DD
+start=HH:MM
+style=duration|onwards|instant
+minutes=0
+BEGIN_EVENT
+(multiline event text)
+END_EVENT
+BEGIN_REMARKS
+(multiline remarks text)
+END_REMARKS
+END_ROW
+END_ROWS
+END_VISIT</pre>
+        </div>
+      </div>
+
+      <aside class="about-right">
+        <div class="about-card">
+          <div class="about-card-title">Offline notes</div>
+          <div class="about-card-body">
+            The app can run fully offline all dependencies are bundled and sourced from local paths.
+            A checklist appears once on first run.
+          </div>
+        </div>
+
+        <div class="about-card mt-3">
+          <div class="about-card-title">Dependencies</div>
+          <div class="about-card-body">
+            <div class="d-flex flex-wrap gap-1 small">
+              <span class="badge rounded-pill text-bg-secondary">Bootstrap</span>
+              <span class="badge rounded-pill text-bg-secondary">Flatpickr</span>
+              <span class="badge rounded-pill text-bg-secondary">jsPDF</span>
+              <span class="badge rounded-pill text-bg-secondary">AutoTable</span>
+              <span class="badge rounded-pill text-bg-secondary">docx</span>
+              <span class="badge rounded-pill text-bg-secondary">Three.js</span>
+              <span class="badge rounded-pill text-bg-secondary">WebCrypto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card mt-3">
+          <div class="about-card-title">Design intent</div>
+          <div class="about-card-body">
+            Streamlined flow, quick entry, edit mode with time manipulation, rapid amendments, editable output option, and basic print formatting for planning visits.
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <footer class="app-footer">© Sage India 2026</footer>
+
+
+
+  <script src="offline-assets/bootstrap.bundle.min.js"></script> <!-- ⚡ -->
+  <script src="auth.js"></script>
+  <script src="offline-assets/three.min.js"></script> <!-- ⚡ -->
+  <script src="terrain.js"></script>
+  <script>
+    (function(){
+      const el = document.getElementById('todayBadge');
+      if(!el) return;
+      const d = new Date();
+      const dd = String(d.getDate()).padStart(2,'0');
+      const mon = d.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+      const yyyy = d.getFullYear();
+      el.textContent = `${dd} ${mon} ${yyyy}`;
+    })();
+  </script>
+</body>
+</html>

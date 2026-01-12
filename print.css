@@ -1,0 +1,69 @@
+/* print: black text on white background, Arial 12 bold, straight boxes */
+
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+
+  body{
+    background: #fff !important;
+    color: #000 !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 12pt !important;
+    font-weight: 700 !important;
+  }
+
+  .no-print{ display: none !important; }
+  .card{
+    border: 2px solid #000 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  table, .table{
+    color: #000 !important;
+  }
+
+  .table-dark th{
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .table-bordered > :not(caption) > * > *{
+    border-width: 2px !important;
+    border-color: #000 !important;
+  }
+
+  textarea, input, select, button{ display: none !important; }
+
+  /* Center alignment instructions: everything centered except Activity (left) */
+  td, th { text-align: center !important; vertical-align: middle !important; }
+  td.activity-cell{ text-align: left !important; }
+
+  /* Keep header block centered visually */
+  .print-header-center{
+    text-align: center !important;
+  }
+}
+
+
+/* Print footer at bottom (very light grey) */
+@media print {
+  .print-footer{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 6mm;
+    text-align: center;
+    font-family: Arial, sans-serif !important;
+    font-size: 8pt !important;
+    font-weight: 400 !important;
+    color: #cfcfcf !important; /* very light grey */
+  }
+}
+
+
+/* Print overrides: Arial 11 */
+@media print{ body{ font-family: Arial, Helvetica, sans-serif !important; font-size: 11pt !important; } .cube-field{ display:none !important; } }
+
+@media print{
+  .app-footer{ display:none !important; }
+}

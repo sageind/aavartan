@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aavartan — Visit Programme</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="alternate icon" href="favicon.svg" />
+
+
+
+  <!-- ⚡ Offline -->
+  <link rel="stylesheet" href="offline-assets/bootstrap.min.css"> <!-- ⚡ -->
+  <link rel="stylesheet" href="offline-assets/flatpickr.min.css"> <!-- ⚡ -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-body">
+  <!-- Three.js terrain background -->
+  <div id="terrainLayer" class="terrain-layer" aria-hidden="true"></div>
+  <!-- Top App Bar -->
+  <header class="app-topbar">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center justify-content-between py-2">
+        <div class="app-brand font-mono">aavartan</div>
+        <div class="d-flex align-items-center gap-2">
+          <div class="app-today font-mono" id="todayBadge"></div>
+          <button class="icon-btn" type="button" id="sidebarMenuBtn" data-bs-toggle="offcanvas" data-bs-target="#appSidebar" aria-controls="appSidebar" aria-label="Menu">
+            <span class="hamburger" aria-hidden="true">☰</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="offcanvas offcanvas-end app-sidebar" tabindex="-1" id="appSidebar" aria-labelledby="appSidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title font-mono m-0" id="appSidebarLabel">menu</h5>
+      <button type="button" class="btn-close" id="sidebarCloseBtn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action" href="index.html">Visits Conducted</a>
+        <a class="list-group-item list-group-item-action" href="vispgme.html">Visit Programme</a>
+        <a class="list-group-item list-group-item-action" href="about.html">About</a>
+        <a class="list-group-item list-group-item-action" href="contact.html">Contact</a>
+      </div>
+
+      <div class="mt-auto pt-3">
+        <div class="sidebar-divider"></div>
+        <div class="d-flex align-items-center justify-content-between px-2">
+          <div class="small text-muted">Dark mode</div>
+          <div class="form-check form-switch m-0">
+            <input class="form-check-input" type="checkbox" id="themeSwitch" />
+          </div>
+        </div>
+        <button class="d-none" id="toggleThemeBtn" type="button">Dark mode</button>
+      </div>
+    </div>
+  </div>
+  <main class="container-fluid app-main pb-5">
+    <div class="row g-4">
+      <!-- Left: Forms -->
+      <div class="col-12 col-lg-4">
+        <div class="card app-card form-card">
+          <div class="card-body">
+            
+            <div class="alert alert-warning py-2 px-3 d-none" id="readOnlyBanner" role="alert">
+              <b>Past visit:</b> this itinerary is read-only. You can export the PDF/DOCX.
+            </div>
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h6 class="mb-0 text-uppercase letterspace">Visit Programme</h6>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-bold">Name of Event (Optional)</label>
+              <input class="form-control" id="eventName" placeholder="Example: Conference / Centenary / Visit">
+            </div>
+            <div class="row g-2">
+              <div class="col-4">
+                <label class="form-label fw-bold">Title</label>
+                <input class="form-control" id="vipTitle" placeholder="Dr / Mr / Mrs">
+              </div>
+              <div class="col-4">
+                <label class="form-label fw-bold">First Name</label>
+                <input class="form-control" id="vipFirst" placeholder="First">
+              </div>
+              <div class="col-4">
+                <label class="form-label fw-bold">Last Name</label>
+                <input class="form-control" id="vipLast" placeholder="Last">
+              </div>
+            </div>
+            <div class="row g-2 mt-1">
+              <div class="col-6">
+                <label class="form-label fw-bold">Awards</label>
+                <input class="form-control" id="vipAwards" placeholder="Nobel Prize / Bharat Ratna / ...">
+              </div>
+              <div class="col-6">
+                <label class="form-label fw-bold">Designation</label>
+                <input class="form-control" id="vipDesig" placeholder="Designation">
+              </div>
+            </div>
+            <div class="row g-2 mt-1">
+              <div class="col-12">
+                <label class="form-label fw-bold">Location</label>
+                <input class="form-control" id="stationName" placeholder="Location">
+              </div>
+            </div>
+            <div class="row g-2 mt-1">
+              <div class="col-6">
+                <label class="form-label fw-bold">Visit From (Date)</label>
+                <input type="date" class="form-control" id="visitFrom">
+              </div>
+              <div class="col-6">
+                <label class="form-label fw-bold">Visit To (Date)</label>
+                <input type="date" class="form-control" id="visitTo">
+              </div>
+            </div>
+            <hr class="my-3">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h6 class="mb-0 text-uppercase letterspace">Add Event</h6>
+              <span class="text-muted small font-mono" id="rowHint"></span>
+            </div>
+            <div class="row g-2">
+              <div class="col-6">
+                <label class="form-label fw-bold">Date</label>
+                <input type="date" class="form-control" id="rowDate">
+              </div>
+              <div class="col-6">
+                <label class="form-label fw-bold">Start Time (24h)</label>
+                <input class="form-control" id="rowStart" placeholder="HH:MM">
+              </div>
+            </div>
+            <div class="row g-2 mt-1">
+              <div class="col-6">
+                <label class="form-label fw-bold">Time Style</label>
+                <select class="form-select" id="rowTimeStyle">
+                  <option value="duration" selected>Duration</option>
+                  <option value="onwards">Onwards</option>
+                  <option value="instant">No Duration (h)</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label fw-bold">Minutes</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="rowMinutes" placeholder="Min" min="0" step="5">
+                  <button class="btn btn-outline-primary" type="button" id="applyMinutesBtn">➕</button>
+                </div>
+              </div>
+            </div>
+            <div class="mt-2">
+              <label class="form-label fw-bold">Event</label>
+              <textarea class="form-control" id="rowEvent" rows="3" placeholder="Line 1: Event Name&#10;Further lines are normal text (new lines)&#10;Further lines (optional)"></textarea>
+              <div class="form-text">PDF/DOCX: First line is <b>bold</b> (Arial 12). Remaining lines appear below (non bold).</div>
+            </div>
+            <div class="mt-2">
+              <label class="form-label fw-bold">Remarks</label>
+              <textarea class="form-control" id="rowRemarks" rows="3" placeholder="Line 1: Location / Mode (bold in PDF)&#10;Line 2+: bullet points"></textarea>
+              <div class="form-text">Line 1 exports in <b>bold</b>; all lines appear as bulleted list.</div>
+            </div>
+            <div class="d-flex gap-2 mt-3">
+              <button class="btn btn-primary fw-bold flex-grow-1" id="addRowBtn" type="button">Add</button>
+              <button class="btn btn-outline-warning fw-bold" id="updateRowBtn" type="button" disabled>Update</button>
+              <button class="btn btn-outline-danger fw-bold" id="cancelEditBtn" type="button" disabled>Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right: Generated -->
+      <div class="col-12 col-lg-8 ps-lg-2">
+        <div class="card app-card">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <h6 class="mb-0 text-uppercase letterspace">Visit Programme</h6>
+                <span class="badge rounded-pill text-bg-secondary font-mono" id="rowCountBadge">0 items</span>
+              </div>
+              <div class="d-flex align-items-center gap-2 ms-auto justify-content-end">
+                <button class="btn btn-sm btn-outline-secondary" id="exportA4TopBtn" type="button">Export A4 PDF</button>
+                <button class="btn btn-sm btn-outline-secondary" id="exportDocxTopBtn" type="button">Export DOCX</button>
+              </div>
+            </div>
+            <div class="generated-title font-mono" id="generatedHeader"></div>
+            <div class="table-responsive mt-2">
+              <table class="table table-bordered align-middle app-table" id="previewTable">
+                <thead>
+                  <tr class="table-light">
+                    <th style="width: 72px; text-align:center;">Ser No.</th>
+                    <th style="width: 170px; text-align:center;">Time</th>
+                    <th>Event</th>
+                    <th style="width: 260px;">Remarks</th>
+                    <th style="width: 160px; text-align:center;" class="no-pdf">Adjust</th>
+                  </tr>
+                </thead>
+                <tbody id="rowsTbody"></tbody>
+              </table>
+            </div>
+            <div class="small text-muted">
+              PDF/DOCX export once finished adding events. Truncation of text may cause formatting issues.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Bottom action bar -->
+  <nav class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <button class="bb-btn" id="newVisitBtn" type="button">🆕<span>New/Clear</span></button>
+      <button class="bb-btn" id="saveVisitBtn" type="button">💾<span>Save</span></button>
+<button class="bb-btn bb-primary" id="pdfA4Btn" type="button">📄<span>A4 PDF</span></button>
+      <button class="bb-btn bb-primary" id="docxBtn" type="button">📝<span>DOCX</span></button>
+      </div>
+  </nav>
+
+  <!-- Dependencies Modal -->
+  <div class="modal fade" id="depsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Offline Assets Checklist</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body deps-links" id="depsBody"></div>
+        <div class="modal-footer">
+          <button class="btn btn-primary fw-bold" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ⚡ JS libraries -->
+  <footer class="app-footer">© Sage India 2026</footer>
+
+
+  <script src="offline-assets/bootstrap.bundle.min.js"></script> <!-- ⚡ -->
+  <script src="auth.js"></script>
+  <script src="offline-assets/flatpickr.js"></script> <!-- ⚡ -->
+  <script src="offline-assets/jspdf.umd.min.js"></script> <!-- ⚡ -->
+  <script src="offline-assets/jspdf.plugin.autotable.min.js"></script> <!-- ⚡ -->
+  <script src="offline-assets/index.umd.js"></script> <!-- ⚡ -->
+  <script src="offline-assets/three.min.js"></script> <!-- ⚡ -->
+  <script src="terrain.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

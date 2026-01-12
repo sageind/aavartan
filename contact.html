@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aavartan — Contact</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="alternate icon" href="favicon.svg" />
+
+
+
+
+  <link rel="stylesheet" href="offline-assets/bootstrap.min.css"> <!-- ⚡ -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="print.css">
+</head>
+
+<body class="app-body contact-page">
+  <div id="terrainLayer" class="terrain-layer" aria-hidden="true"></div>
+
+  <header class="app-topbar">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center justify-content-between py-2">
+        <div class="app-brand font-mono">aavartan</div>
+        <div class="d-flex align-items-center gap-2">
+          <div class="app-today font-mono" id="todayBadge"></div>
+          <button class="icon-btn" type="button" id="sidebarMenuBtn" data-bs-toggle="offcanvas" data-bs-target="#appSidebar" aria-controls="appSidebar" aria-label="Menu">
+            <span class="hamburger" aria-hidden="true">☰</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="offcanvas offcanvas-end app-sidebar" tabindex="-1" id="appSidebar" aria-labelledby="appSidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title font-mono m-0" id="appSidebarLabel">menu</h5>
+      <button type="button" class="btn-close" id="sidebarCloseBtn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action" href="index.html">Visits Conducted</a>
+        <a class="list-group-item list-group-item-action" href="vispgme.html?new=1">Visit Programme</a>
+        <a class="list-group-item list-group-item-action" href="about.html">About</a>
+        <a class="list-group-item list-group-item-action" href="contact.html">Contact</a>
+      </div>
+
+      <div class="mt-auto pt-3">
+        <div class="sidebar-divider"></div>
+        <div class="d-flex align-items-center justify-content-between px-2">
+          <div class="small text-muted">Dark mode</div>
+          <div class="form-check form-switch m-0">
+            <input class="form-check-input" type="checkbox" id="themeSwitch" />
+          </div>
+        </div>
+        <button class="d-none" id="toggleThemeBtn" type="button">Dark mode</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="container-fluid app-main pb-4">
+    <section class="card app-card">
+      <div class="card-body">
+        <h4 class="mb-3">Contact</h4>
+
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <div class="p-3 border rounded-3">
+              <div class="fw-bold">Telephone</div>
+              <div class="text-muted">REDACTED</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="p-3 border rounded-3">
+              <div class="fw-bold">Email</div>
+              <div class="text-muted">sageind@proton.me</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-3 mb-0 small text-muted">Email to collaborate.</p>
+      </div>
+    </section>
+
+  </main>
+  <footer class="app-footer">© Sage India 2026</footer>
+
+
+
+  <script src="offline-assets/bootstrap.bundle.min.js"></script> <!-- ⚡ -->
+  <script src="auth.js"></script>
+  <script src="offline-assets/three.min.js"></script> <!-- ⚡ -->
+  <script src="terrain.js"></script>
+  <script src="feedback.js"></script>
+  <script>
+    (function(){
+      const el = document.getElementById('todayBadge');
+      if(!el) return;
+      const d = new Date();
+      const dd = String(d.getDate()).padStart(2,'0');
+      const mon = d.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+      const yyyy = d.getFullYear();
+      el.textContent = `${dd} ${mon} ${yyyy}`;
+    })();
+  </script>
+</body>
+</html>
