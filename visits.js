@@ -51,7 +51,7 @@
     if(!depsModalEl || !depsBody || !window.bootstrap) return;
     const html = `
       <div class="small text-muted mb-2">
-        Download these ⚡ files for full offline use. Replace the CDN links in <code>index.html</code> with local paths.
+        The files are bundled ⚡ for full offline use. Download the Zip from the project page for offline use.
       </div>
       <ol class="mb-0">
         ${EXTERNAL_DEPS.map(d => `<li><b>${escapeHtml(d.name)}</b><br><a class="deps-link" href="${d.url}" target="_blank" rel="noopener">${escapeHtml(d.url)}</a> ⚡</li>`).join('')}
