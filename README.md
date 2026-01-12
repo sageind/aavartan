@@ -13,7 +13,7 @@ Designed for quick data entry, deterministic itinerary generation, and ergonomic
 - **Visits Conducted**📚
   - Search, filter, and open prior visits🔎.
   - Inline open preview on the landing page (embedded Visit Programme view)🖼️.
-- **Import / Export (TXT)**📄
+- **Import or Export**📄
   - Import visits from a TXT file and have them immediately appear in the conducted list ⬇️.
   - Export to TXT for backup and portability ⬆️.
 - **Exports**🧷
