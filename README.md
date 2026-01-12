@@ -27,7 +27,7 @@ Designed for quick data entry, deterministic itinerary generation, and ergonomic
 
 ## Usage
 
-1. Open `index.html` in a modern browser.
+1. Open `index.html` in a modern browser. Access it online [here](https://sageind.github.io/aavartan/) 🥷🏽✒️🖤
 2. Use **Visit Programme** to create a new programme, or use **Visits Conducted** to open existing programmes.
 3. Use **Import TXT** to restore previously exported data. After import refresh the `index.html` page.
 
@@ -35,6 +35,6 @@ Designed for quick data entry, deterministic itinerary generation, and ergonomic
 
 - This package is intended for offline deployment on a single workstation only client side code execution.
 - If you deploy on removable media, keep the entire folder structure intact.
-- Vibe coded using Chat GPT in Jan 2026. Dedicated as service to hero worshippers, all sloppy toppy uncle aunties, and all dumdums who should be able to order from a french menu and program a fucking computer.
-- Click New on bottom navbar if Visit Programme page loads with past visit data after viewing past visit (quirk). Send me more quirks.
+- Vibe coded in Jan 2026 by self. Dedicated as service to all meticulous planners, hero worshippers, uncles & aunties.
+- Click New on bottom navbar if Visit Programme page loads with past visit data after viewing past visit (quirk). Send me more quirks and buy me a coffee.
 
