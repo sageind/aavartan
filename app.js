@@ -1,5 +1,5 @@
 
-/* AAVARTAN — VIP Itinerary Planner (offline-first)
+/* AAVARTAN — VIP Itinerary/Visit Programme Planner & Generator (offline-first)
    PDF export uses jsPDF + AutoTable. Default PDF font is Helvetica (closest to Arial). For strict Arial, embed Arial TTF offline.
 */
 
