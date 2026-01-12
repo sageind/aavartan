@@ -5,25 +5,25 @@ Designed for quick data entry, deterministic itinerary generation, and ergonomic
 
 ## Major Features
 
-- **Offline-first / air-gapped**: no CDN dependencies; all assets bundled locally.
-- **Local data persistence**: visits are stored locally (encrypted at rest where enabled).
-- **Visit Programme workflow**
-  - Create a new visit, auto-generate the programme table, and iterate quickly.
-  - **Past visits become read-only** (prevents accidental edits); exports remain available.
-- **Visits Conducted**
-  - Search, filter, and open prior visits.
-  - Inline open preview on the landing page (embedded Visit Programme view).
-- **Import / Export (TXT)**
-  - Import visits from a TXT file and have them immediately appear in the conducted list.
-  - Export to TXT for backup and portability.
-- **Exports**
-  - **A4 PDF export** with pagination and repeated table headers.
-  - **DOCX export** matching the same tabulation intent as the PDF.
-  - Export “Time” formatting: `0700-0720h` with `(XX min)` on the next line.
+- **Offline-first / air-gapped**🔒: no CDN dependencies; all assets bundled locally.
+- **Local data persistence**💾: visits are stored locally (encrypted at rest where enabled)🔐.
+- **Visit Programme workflow**🗓️
+  - Create a new visit, auto-generate the programme table, and iterate quickly⚙️.
+  - **Past visits become read-only** 🧾(prevents accidental edits); exports remain available 📤.
+- **Visits Conducted**📚
+  - Search, filter, and open prior visits🔎.
+  - Inline open preview on the landing page (embedded Visit Programme view)🖼️.
+- **Import / Export (TXT)**📄
+  - Import visits from a TXT file and have them immediately appear in the conducted list ⬇️.
+  - Export to TXT for backup and portability ⬆️.
+- **Exports**🧷
+  - **A4 PDF export** 🧾 with pagination and repeated table headers 🔁.
+  - **DOCX export** 📝 matching the same tabulation intent as the PDF.
+    
 - **Modern UI**
-  - Light/Dark themes with contrast-safe typography.
-  - Geometry + Conway's Game of Life background visualizations (subtle, low-distraction).
-  - Sidebar quick actions and session countdown display.
+  - Light/Dark themes 🌓 with contrast-safe typography 👁️.
+  - Geometry + Conway's Game of Life background visualizations ✨ (subtle, low-distraction).
+  - Sidebar quick actions 🧭 and session countdown display ⏳.
 
 ## Usage
 
